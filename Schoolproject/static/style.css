@@ -1,0 +1,18 @@
+
+        .loginButton {
+            background-color: #4CAF50; / Background color /
+            color: white; / Text color /
+            border: none; / Remove border /
+            padding: 10px 20px; / Padding for spacing /
+            text-align: center; / Center text horizontally /
+            text-decoration: none; / Remove underline on text /
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px; / Rounded corners /
+            cursor: pointer; / Change cursor to pointer on hover /
+        }
+
+        / Change button style on hover /
+        .nice-button:hover {
+            background-color: #45a049;
+        }

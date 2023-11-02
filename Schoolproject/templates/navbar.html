@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      ABC College
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Departments
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="departmentDropdown">
+                        <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Computer_science">Computer Science</a>
+                        <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Commerce">Commerce</a>
+                         <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Arts">Arts</a>
+                         <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Medical">Medical</a>
+                         <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Engineering">Engineering</a>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+     <a class="navbar-brand" href="login">
+        <button id="loginButton">Login</button>
+    </a>
+    <a class="navbar-brand" href="register">
+        <button id="registerButton">Register</button>
+     </a>
+
+    <div class="click-here">
+        <a href="form">Click Here</a>
+    </div>
+
+
+    </nav>
+
+    <img src="{% static 'img/scl.jpg' %}" width="1280px;" height="540px;">
+
+
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+{% block body %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <body style="background-image: url('https://images.pexels.com/photos/7130534/pexels-photo-7130534.jpeg?auto=compress&cs=tinysrgb&w=12600&h=7500&dpr=1%27');">
+<!--    <body style="background-image: url('https://pngtree.com/freebackground/modern-double-color-futuristic-neon-background_1181573.html');">-->
+
+
+    <h1>Fill the Form</h1>
+    <meta charset="UTF-8">
+    <title>form</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="Name" placeholder="enter your name"><br>
+    <input type="date" name="DOB" placeholder="enter your date of birth"><br>
+    <input type="number" name="Age" placeholder="enter your age"><br>
+    <input type="text" name="Gender" placeholder="enter your Gender"><br>
+    <input type="number" name="PhoneNumber" placeholder="enter your phonenumber"><br>
+    <input type="email" name="email" placeholder="enter your email address"><br>
+    <input type="text" name="Address" placeholder="enter your Address"><br>
+<!--    <label for="department">Department:</label>-->
+<!--    <select id="department" name="department">-->
+<!--        <option value="computer_science">Computer Science</option>-->
+<!--        <option value="commerce">Commerce</option>-->
+<!--        <option value="engineering">Engineering</option>-->
+<!--        <option value="medicine">Medicine</option>-->
+<!--        <option value="arts">Arts</option>-->
+<!--    </select><br>-->
+
+    <!-- Department dropdown -->
+    <label for="department">Department:</label>
+    <select id="department" onchange="updateCourses()">
+        <option value="computer_science">Computer Science</option>
+        <option value="Arts">Arts</option>
+        <option value="Medical">Medical</option>
+        <option value="commerce">Commerce</option>
+        <option value="Engineering">Engineering</option>
+        <!-- Add other department options here -->
+    </select>
+
+    <br>
+
+    <!-- Course dropdown (initially disabled) -->
+    <label for="course">Course:</label>
+    <select id="course" disabled>
+        <option value="">Select a department first</option>
+    </select>
+
+    <script>
+        function updateCourses() {
+            var departmentDropdown = document.getElementById('department');
+            var courseDropdown = document.getElementById('course');
+
+            // Define courses for each department
+            var courses = {
+                computer_science: ['BCA', 'BSC.C.S'],
+                commerce: ['B.COM', 'BBA'],
+                Medical: ['Medical coding', 'B-pharm', 'Pharm-d'],
+                Arts: [ 'B.M.S', 'B.A'],
+                Engineering: ['Civil Engineering', 'C.S Engineering', 'Mechanical Engineering']
+                // Add courses for other departments
+            };
+
+            var selectedDepartment = departmentDropdown.value;
+            var courseOptions = courses[selectedDepartment] || [];
+
+            // Clear previous course options
+            courseDropdown.innerHTML = '';
+
+            // Populate the course dropdown with options
+            if (courseOptions.length === 0) {
+                var option = document.createElement('option');
+                option.text = 'No courses available for this department';
+                courseDropdown.add(option);
+            } else {
+                for (var i = 0; i < courseOptions.length; i++) {
+                    var option = document.createElement('option');
+                    option.value = courseOptions[i];
+                    option.text = courseOptions[i];
+                    courseDropdown.add(option);
+                }
+            }
+
+            // Enable or disable the course dropdown based on the department selection
+            if (selectedDepartment) {
+                courseDropdown.disabled = false;
+            } else {
+                courseDropdown.disabled = true;
+            }
+        }
+
+    </script><br>
+    <label for="purpose">Purpose:</label>
+<select id="purpose" name="purpose">
+    <option value="enquiry">Enquiry</option>
+    <option value="place_order">Place Order</option>
+    <option value="return">Return</option>
+    <!-- Add other purpose options as needed -->
+</select><br>
+<label>Materials Provided:</label>
+<input type="checkbox" id="notebook" name="materials" value="notebook">
+<label for="notebook">Notebook</label>
+
+<input type="checkbox" id="pen" name="materials" value="pen">
+<label for="pen">Pen</label>
+
+<input type="checkbox" id="exam_papers" name="materials" value="exam_papers">
+<label for="exam_papers">Exam Papers</label><br>
+
+<!-- Add more checkboxes for other materials as needed -->
+     <script>
+        function showMessage() {
+
+            event.preventDefault();
+
+            var messageElement = document.getElementById("message");
+
+            // Update the message text
+            messageElement.innerHTML = "Submission Successful!"; // Change this message as needed
+        }
+    </script>
+
+    <input type="submit" value="Submit" onclick="showMessage();">
+
+    <p id="message"></p>
+
+    <a href="/">Return To Home</a><br>
+    <a href="logout">
+    <input type="submit" value="Logout">
+
+<!--    <div id="logoutMessage" style="display: none;">-->
+<!--        <p>You have been successfully logged out.</p>-->
+<!--        <a href="home.html">Return to Home</a>-->
+<!--    </div>-->
+
+
+
+</form>
+{% for msg in messages %}
+{{msg}}
+{% endfor %}
+</body>
+</html>
